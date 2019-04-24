@@ -2,6 +2,19 @@
 
 /** Import everything from autoload */
 @import "./autoload/**/*";
+// 1. Your custom variables and variable overwrites.
+
+@import "node_modules/bootstrap/scss/mixins/_breakpoints";
+@import "node_modules/bootstrap/scss/mixins/_screen-reader";
+@import "node_modules/bootstrap/scss/utilities/screenreaders";
+// 2. Import default variables and available mixins.
+@import "uikit/src/scss/variables-theme.scss";
+@import "uikit/src/scss/mixins-theme.scss";
+
+// 3. Your custom mixin overwrites.
+@mixin hook-card() { color: #000; }
+
+// 4. Import UIkit.
 
 /**
  * Import npm dependencies
@@ -23,3 +36,4 @@
 @import "layouts/pages";
 @import "layouts/posts";
 @import "layouts/tinymce";
+@import "uikit/src/scss/uikit-theme.scss";

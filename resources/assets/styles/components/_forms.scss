@@ -1,19 +1,19 @@
 /** Search form */
 .search-form {
-  @extend .form-inline;
+  @extend .uk-search;
 }
 
 .search-form label {
-  @extend .form-group;
+  //@extend .form-group;
 
   font-weight: normal;
 }
 
 .search-form .search-field {
-  @extend .form-control;
+  @extend .uk-search-input;
 }
 
 .search-form .search-submit {
-  @extend .btn;
-  @extend .btn-secondary;
+  @extend .uk-button;
+  @extend .uk-button-default;
 }

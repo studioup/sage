@@ -1,6 +1,6 @@
 const url = require('url');
 const webpack = require('webpack');
-const BrowserSyncPlugin = require('browsersync-webpack-plugin');
+const BrowserSyncPlugin = require('browser-sync-webpack-plugin');
 
 const config = require('./config');
 
@@ -16,11 +16,12 @@ if (url.parse(target).protocol === 'https:') {
 }
 
 module.exports = {
+  mode: 'development',
   output: {
     pathinfo: true,
     publicPath: config.proxyUrl + config.publicPath,
   },
-  devtool: '#cheap-module-source-map',
+  devtool: 'cheap-module-source-map',
   stats: false,
   plugins: [
     new webpack.optimize.OccurrenceOrderPlugin(),
@@ -29,9 +30,15 @@ module.exports = {
     new BrowserSyncPlugin({
       target,
       open: config.open,
-      proxyUrl: config.proxyUrl,
+      proxy: config.devUrl,
       watch: config.watch,
-      delay: 500,
+      delay: 500
+      //server: { baseDir: config.publicPath }
+    },{
+      // prevent BrowserSync from reloading the page
+      // and let Webpack Dev Server take care of this
+      reload: true,
+      injectCss: true
     }),
   ],
 };
